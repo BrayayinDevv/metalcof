@@ -7,26 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <h1>METALCOF</h1>
-                <h1 class="main-title">Estufas y Hornos de Calidad</h1>
-            </div>
-            <div class="logout">
-                <a href="logout.php" class="logout-button">Salir</a>
-            </div>
-        </div>
-        <br>
-        <nav>
-            <ul>
-                <li><a href="home.html" style="color: aqua;">Inicio</a></li>
-                <li><a href="productos.php">Productos</a></li>
-                <li><a href="acerca.html">Acerca de Nosotros</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php
+    include 'header.php';
+
+    ?>
 
     <main>
         <section class="about-section">

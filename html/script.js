@@ -40,22 +40,22 @@ function buscarProductos() {
 
 
 //agregar al carrito
-function agregarAlCarrito(producto){
-    
+function agregarAlCarrito(producto) {
+    let datosCarrito = JSON.parse(localStorage.getItem("datosCarrito")) || {};
 
-    datosCarrito = JSON.parse(localStorage.getItem("datosCarrito"))
-
-    if(!datosCarrito || !datosCarrito[0] ){
-        datosCarrito = [producto.id_producto+producto.nombre_producto:{...producto, cantidad:1}]
-    }else{
-        
+    // Si el producto no está en el carrito, agregarlo
+    if (!datosCarrito[producto.id_producto]) {
+        datosCarrito[producto.id_producto] = { ...producto, cantidad: 1 };
+    } else {
+        // Si ya existe, incrementa la cantidad
+        datosCarrito[producto.id_producto].cantidad += 1;
     }
 
-
-
-    console.log(datosCarrito)
+    alert("Cantidad de productos agregados al stock:" + datosCarrito[producto.id_producto].cantidad)
     localStorage.setItem("datosCarrito", JSON.stringify(datosCarrito));
-
 }
+
+
+
 
 

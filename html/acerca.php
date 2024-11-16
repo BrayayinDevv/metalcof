@@ -7,20 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>METALCOF</h1>
-        </div>
-            <h1 class="sub">Acerca de Nosotros</h1>
-        <nav>
-            <ul>
-                <li><a href="home.html">Inicio</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <li><a href="acerca.html">Acerca de Nosotros</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-            </ul>
-        </nav>
-    </header>
+
+    <?php
+    
+    include 'header.php';
+
+    ?>
+
     <main class="about-main">
         <h2>¡Bienvenidos a Metalcof!</h2>
         <br>

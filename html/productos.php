@@ -30,19 +30,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>METALCOF</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="home.html">Inicio</a></li>
-                <li><a href="productos.php">Productos</a></li>
-                <li><a href="acerca.html">Acerca de Nosotros</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-            </ul>
-        </nav>
-    </header>
+<?php
+    include 'header.php';
+
+    ?>
 
     <main id="productos">
         <h2>Nuestros Productos</h2>
@@ -76,7 +67,7 @@
     
                                 echo "<span class='price'>". darFormatoPrecioCo($producto["precio_producto"]) ."</span>";
     
-                                echo "<button onclick='agregarAlCarrito(".json_encode($producto) .")'>Agregar al Carrito</button>";
+                                echo "<button onclick='agregarAlCarrito(".htmlspecialchars(json_encode($producto)) .")'>Agregar al Carrito</button>";
                                 
                             echo "</div>";
                         }

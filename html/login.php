@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Aquí puedes redirigir al usuario a la página principal o almacenar la sesión
             session_start();
             $_SESSION['username'] = $user['username'];
-            header("Location: home.html");
+            header("Location: home.php");
         } else {
             echo $password;
             echo $user['contraseña'];
