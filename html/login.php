@@ -1,5 +1,4 @@
 <?php
-
 include 'db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -8,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Consulta el usuario en la base de datos
     $query = "SELECT * FROM usuarios WHERE nombre_usuario = ?";
-    $stmt = $conn->prepare(query: $query);
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -18,14 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Verifica la contraseña
         if (password_verify($password, $user['contraseña'])) {
-            echo "Inicio de sesión exitoso";
-            // Aquí puedes redirigir al usuario a la página principal o almacenar la sesión
+            // Inicio de sesion exitoso guarda el nombre del usuario en la sesion
             session_start();
-            $_SESSION['username'] = $user['username'];
+            $_SESSION['nombre_usuario'] = $user['nombre_usuario']; // Almacena el nombre del usuario en la sesion
             header("Location: home.php");
+            exit();
         } else {
-            echo $password;
-            echo $user['contraseña'];
             echo "Contraseña incorrecta.";
         }
     } else {
@@ -35,5 +32,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $conn->close();
 }
-
 ?>

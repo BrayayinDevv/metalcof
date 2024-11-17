@@ -52,13 +52,17 @@
                 console.log(key)
 
                 htmlText +=`
-                    <div>
-                        <h3 class"titulo">${element.nombre_producto}</h3>
-                        <p>${element.descripcion_producto}</p>
-                        <img src="${element.imagen_producto}" alt="${element.nombre_producto}" style="width: 75px;">
-                        <span>Precio:${formatoPesos(element.precio_producto)}</span>
-                        <span>Cantidad:${element.cantidad}</span>
-                        <button onclick='eliminarProd(${key})'>Eliminar</button>
+                    <div class="producto">
+                        <img src="${element.imagen_producto}" alt="${element.nombre_producto}">
+                        <div class="info-producto">
+                            <h3>${element.nombre_producto}</h3>
+                            <p>${element.descripcion_producto}</p>
+                            <span class="precio">${formatoPesos(element.precio_producto)}</span>
+                            <span class="cantidad">Cantidad: ${element.cantidad}</span>
+                        </div>
+                        <div class="acciones-producto">
+                            <button onclick='eliminarProd(${key})'>Eliminar</button>
+                        </div>
                     </div>
                     <hr>
                 `;

@@ -1,11 +1,35 @@
-<header>
+<?php
+session_start();
+
+// Verifica si el usuario ha iniciado sesion
+if (!isset($_SESSION['nombre_usuario'])) {
+    exit();
+}
+//Obtieen el nombre del usuario de la base de datos
+$nombreUsuario = $_SESSION['nombre_usuario']; 
+?>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Inicio - METALCOF</title>
+</head>
+<body>
+    <header>
         <div class="header-content">
             <div class="logo">
                 <h1>METALCOF</h1>
                 <h1 class="main-title">Estufas y Hornos de Calidad</h1>
             </div>
+            <div class="bienvenida">
+                <p>Bienvenido, <?php echo htmlspecialchars($nombreUsuario); ?>! 👋</p>
+            </div>
             <div class="logout">
-                <a href="logout.php" class="logout-button">Salir</a>
+                <a href="index.html" class="logout-button">Salir</a>
             </div>
         </div>
         <br>
@@ -18,5 +42,5 @@
             </ul>
         </nav>
     </header>
-
-    
+</body>
+</html>
