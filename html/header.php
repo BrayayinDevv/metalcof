@@ -26,7 +26,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                 <h1 class="main-title">Estufas y Hornos de Calidad</h1>
             </div>
             <div class="bienvenida">
-                <p>Bienvenido, <?php echo htmlspecialchars($nombreUsuario); ?>! 👋</p>
+            <p>Bienvenido, <?php echo htmlspecialchars($nombreUsuario); ?>! 👋</p>
             </div>
             <div class="logout">
                 <a href="index.html" class="logout-button">Salir</a>
