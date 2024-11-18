@@ -105,8 +105,11 @@ p a:hover {
 .hidden {
     display: none;
 }
-
-
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
 </style>
 </head>
 <body>
@@ -114,6 +117,9 @@ p a:hover {
     <div class="container">
         <div class="form-container" id="loginContainer">
             <h1>Iniciar Sesión</h1>
+            <div id="errorMessage" class="error-message" style="display: none;">
+                Usuario y/o Contraseña incorrecto.
+            </div>
             <form id="loginForm" action="login.php" method="post">
                 <div class="input-group">
                     <label for="username">Usuario</label>
@@ -149,5 +155,12 @@ p a:hover {
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        // Detectar error en la URL y mostrar mensaje
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('error')) {
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

@@ -71,4 +71,3 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Página cargada, actualizando contador...");
     actualizarContadorCarrito();
 });
-

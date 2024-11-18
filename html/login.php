@@ -19,15 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $user['contraseña'])) {
             // Inicio de sesion exitoso guarda el nombre del usuario en la sesion
             session_start();
-            $_SESSION['nombre_usuario'] = $user['nombre_usuario']; 
+            $_SESSION['nombre_usuario'] = $user['nombre_usuario']; // Almacena el nombre del usuario en la sesion
             header("Location: home.php");
             exit();
         } else {
-            header("Location: index.html?error=1"); 
+            header("Location: index.html?error=1"); // Contraseña incorrecta
             exit();
         }
     } else {
-        header("Location: index.html?error=1"); 
+        header("Location: index.html?error=1"); // Usuario no encontrado
         exit();
     }
 
