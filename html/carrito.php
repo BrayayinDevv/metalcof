@@ -34,7 +34,7 @@
 
 
     <script>
-        //Agregar productos al carrito
+        //Agregar productos al carrito para comprar
         const contenedorProd =document.getElementById("cart-items");
         const totalProdSpan =document.getElementById("cart-total");
         
@@ -75,7 +75,7 @@
         contenedorProd.innerHTML = htmlText;
         totalProdSpan.innerHTML = formatoPesos(totalPedido);
 
-        //Eliminar producto del carrito
+        //Eliminar producto del carrito para comprar
         function eliminarProd(idProd){
             let datosCarrito = JSON.parse(localStorage.getItem("datosCarrito")) || {};
             delete datosCarrito[idProd]

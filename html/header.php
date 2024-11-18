@@ -41,6 +41,13 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                 <li><a href="carrito.php">Carrito</a></li>
             </ul>
         </nav>
+        <div>
+        <div class="header-container">
+            <div class="carrito">
+                🛒 <span id="carrito-contador">0</span>
+            </div>
+        </div>
+        </div>
     </header>
 </body>
 </html>

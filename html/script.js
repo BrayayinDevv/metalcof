@@ -1,6 +1,3 @@
-
-
-
 //Login//
 document.getElementById("showRegister").addEventListener("click", function(event) {
     event.preventDefault();
@@ -13,11 +10,6 @@ document.getElementById("showLogin").addEventListener("click", function(event) {
     document.getElementById("registerContainer").classList.add("hidden");
     document.getElementById("loginContainer").classList.remove("hidden");
 });
-
-
-
-
-
 
 
 //Barra-De-Busqueda//
@@ -38,24 +30,45 @@ function buscarProductos() {
     });
 }
 
-
-//agregar al carrito
+// Función para agregar productos al carrito
 function agregarAlCarrito(producto) {
-    let datosCarrito = JSON.parse(localStorage.getItem("datosCarrito")) || {};
+    console.log("Producto agregado:", producto);
 
-    // Si el producto no está en el carrito, agregarlo
+    let datosCarrito = JSON.parse(localStorage.getItem("datosCarrito")) || {};
+    console.log("Estado inicial del carrito:", datosCarrito);
+
     if (!datosCarrito[producto.id_producto]) {
         datosCarrito[producto.id_producto] = { ...producto, cantidad: 1 };
     } else {
-        // Si ya existe, incrementa la cantidad
         datosCarrito[producto.id_producto].cantidad += 1;
     }
 
-    alert("Cantidad de productos agregados al stock:" + datosCarrito[producto.id_producto].cantidad)
     localStorage.setItem("datosCarrito", JSON.stringify(datosCarrito));
+    console.log("Estado actualizado del carrito:", datosCarrito);
+
+    actualizarContadorCarrito();
 }
 
+function actualizarContadorCarrito() {
+    let datosCarrito = JSON.parse(localStorage.getItem("datosCarrito")) || {};
+    console.log("Datos cargados de localStorage:", datosCarrito);
 
+    let totalProductos = 0;
 
+    for (const productoId in datosCarrito) {
+        totalProductos += datosCarrito[productoId].cantidad;
+    }
 
+    console.log("Total de productos en el carrito:", totalProductos);
+
+    const contadorCarrito = document.getElementById("carrito-contador");
+    if (contadorCarrito) {
+        contadorCarrito.textContent = totalProductos;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Página cargada, actualizando contador...");
+    actualizarContadorCarrito();
+});
 

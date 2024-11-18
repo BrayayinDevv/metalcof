@@ -82,33 +82,11 @@
 
 
     </main>
-
     <footer>
         <p>&copy; 2024 METALCOF. Todos los derechos reservados.</p>
     </footer>
 
 
     <script src="script.js"></script>
-
-    <script>
-        function agregarAlCarrito(producto){
-    
-
-            datosCarrito = JSON.parse(localStorage.getItem("datosCarrito"))
-
-            if(!datosCarrito || !datosCarrito[0] ){
-                datosCarrito = [producto.id_producto+producto.nombre_producto:{...producto, cantidad:1}]
-            }else{
-                
-            }
-
-
-
-            console.log(datosCarrito)
-            localStorage.setItem("datosCarrito", JSON.stringify(datosCarrito));
-
-        }
-    </script>
-   
 </body>
 </html>
