@@ -13,17 +13,38 @@
     ?>
 
     <main id="carrito">
-        <h2>Carrito de Compras</h2>
+            <h2>Carrito de Compras</h2>
         <div id="cart-items">
-
-            
-            
-
         </div>
-        <div class="total">
+        <br>
+        <br>
             <h3>Total: <span id="cart-total">$0</span></h3>
-            <button onclick="checkout()">Realizar Compra</button>
-        </div>
+        <br>
+        <form action="procesar_pago.php" method="POST">
+            <label for="nombre_cliente">Nombre:</label>
+            <input type="text" name="nombre_cliente" id="nombre_cliente" required>
+            <label for="correo_cliente">Correo Electrónico:</label>
+            <input type="email" name="correo_cliente" id="correo_cliente" required>
+            <label for="numero_contacto">Número de Contacto:</label>
+            <input type="text" name="numero_contacto" id="numero_contacto" required>
+            <label for="direccion_cliente">Dirección:</label>
+            <input type="text" name="direccion_cliente" id="direccion_cliente" required>
+            <label for="metodo_pago">Método de Pago:</label>
+            <select name="metodo_pago" id="metodo_pago" required>
+                <option value="PSE">PSE</option>
+                <option value="Débito">Débito</option>
+                <option value="Crédito">Crédito</option>
+            </select>
+            <input type="hidden" name="productos" id="productos">
+            <button type="submit">Realizar el pago</button>
+        </form>
+
+<script>
+    //datos del carrito están en localStorage
+    document.getElementById('productos').value = localStorage.getItem('datosCarrito');
+</script>
+
+
     </main>
 
     <footer class="footer">
@@ -33,7 +54,7 @@
     <script src="script.js"></script>
 
 
-    <script>
+<script>
         //Agregar productos al carrito para comprar
         const contenedorProd =document.getElementById("cart-items");
         const totalProdSpan =document.getElementById("cart-total");
@@ -89,7 +110,6 @@
         function formatoPesos(numero){
             return numero.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
         }
-
-    </script>
+</script>
 </body>
 </html>
