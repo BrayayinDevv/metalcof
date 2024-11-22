@@ -39,6 +39,13 @@
             <button type="submit">Realizar el pago</button>
         </form>
 
+        <div id="factura-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Factura Generada</h2>
+                <div id="factura-detalles"></div>
+            </div>
+        </div>
 <script>
     //datos del carrito están en localStorage
     document.getElementById('productos').value = localStorage.getItem('datosCarrito');
@@ -46,7 +53,6 @@
 
 
     </main>
-
     <footer class="footer">
         © 2024 METALCOF. Todos los derechos reservados.
     </footer>
@@ -106,10 +112,40 @@
             location.reload();
         }
 
-        //cambiar numero a pesos
+        //Cambia numero a pesos
         function formatoPesos(numero){
             return numero.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
         }
+
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault(); // Previene el envío estandar del formulario
+
+            const formData = new FormData(this);
+
+        fetch("procesar_pago.php", {
+            method: "POST",
+            body: formData,
+    })
+        .then((response) => response.text())
+        .then((data) => {
+
+            // Inserta datos de la factura en el modal
+            document.getElementById("factura-detalles").innerHTML = data;
+
+            // Mostrar el modal
+            const modal = document.getElementById("factura-modal");
+            modal.style.display = "flex";
+
+            // Agrega funcionalidad para cerrar el modal
+            document.querySelector(".close-btn").onclick = function () {
+                modal.style.display = "none";
+            };
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("Hubo un problema al procesar la solicitud.");
+        });
+});
 </script>
 </body>
 </html>
